@@ -1,2 +1,1 @@
-# querydsltutorial
-Querydsl tutorial
+# Querydsl tutorial
