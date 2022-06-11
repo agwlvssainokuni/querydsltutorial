@@ -24,7 +24,6 @@ import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.jdbc.support.SQLExceptionTranslator;
 
 import com.querydsl.sql.SQLQueryFactory;
 import com.querydsl.sql.SQLTemplates;
@@ -36,15 +35,14 @@ import com.querydsl.sql.spring.SpringExceptionTranslator;
 public class QuerydslConfiguration {
 
     @Bean
-    public SQLQueryFactory sqlQueryFactory(DataSource dataSource, SQLExceptionTranslator translator)
-            throws SQLException {
+    public SQLQueryFactory sqlQueryFactory(DataSource dataSource) throws SQLException {
         SQLTemplates templates;
         try (Connection connection = dataSource.getConnection()) {
             SQLTemplatesRegistry registry = new SQLTemplatesRegistry();
             templates = registry.getTemplates(connection.getMetaData());
         }
         com.querydsl.sql.Configuration configuration = new com.querydsl.sql.Configuration(templates);
-        configuration.setExceptionTranslator(new SpringExceptionTranslator(translator));
+        configuration.setExceptionTranslator(new SpringExceptionTranslator());
         Supplier<Connection> connProvider = new SpringConnectionProvider(dataSource);
         SQLQueryFactory sqf = new SQLQueryFactory(configuration, connProvider);
         return sqf;
