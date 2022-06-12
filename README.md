@@ -512,10 +512,9 @@ QTodo a = new QTodo("a");
 SQLQuery<?> query = queryFactory.from(a);
 
 /* CASE式を組立てる。 */
-Date basedt = new Date(LocalDate.of(2015, 2, 1).toEpochDay() * 24 * 60 * 60 * 1000);
 Expression<String> doneDesc = Expressions.cases()
         .when(a.doneFlg.eq(1)).then("実施済")
-        .when(a.dueDt.lt(basedt)).then("未実施(期限内)")
+        .when(a.dueDt.lt(LocalDate.of(2015, 2, 1))).then("未実施(期限内)")
         .otherwise("未実施(期限切)");
 
 /* 取出すカラムとデータの取出し方を指定してクエリを発行する。 */
@@ -797,12 +796,12 @@ NumberPath<Long> aId = Expressions.numberPath(
         Long.class, a, "a_id");
 StringPath aPostedBy = Expressions.stringPath(
         a, "a_posted_by");
-DateTimePath<Timestamp> aPostedAt = Expressions.dateTimePath(
-        Timestamp.class, a, "a_posted_at");
+DateTimePath<LocalDateTime> aPostedAt = Expressions.dateTimePath(
+        LocalDateTime.class, a, "a_posted_at");
 NumberPath<Integer> aDoneFlg = Expressions.numberPath(
         Integer.class, a, "a_done_flg");
-DateTimePath<Timestamp> aDoneAt = Expressions.dateTimePath(
-        Timestamp.class, a, "a_done_at");
+DateTimePath<LocalDateTime> aDoneAt = Expressions.dateTimePath(
+        LocalDateTime.class, a, "a_done_at");
 
 /* 外側のSELECT文の抽出条件を組み立てる。 */
 SQLQuery<?> query = queryFactory
@@ -943,12 +942,11 @@ WHERE
 ```Java
 /* 抽出条件を組み立てる。 */
 QTodo a = new QTodo("a");
-Date basedt = new Date(LocalDate.of(2015, 2, 1).toEpochDay() * 24 * 60 * 60 * 1000);
 SQLQuery<?> query = queryFactory
         .from(a)
         .where(
                 a.doneFlg.eq(1)
-                        .or(a.dueDt.goe(basedt))
+                        .or(a.dueDt.goe(LocalDate.of(2015, 2, 1)))
                         .and(a.doneAt.isNull()));
 
 /* 取出すカラムとデータの取出し方を指定してクエリを発行する。 */
@@ -987,12 +985,11 @@ WHERE
 ```Java
 /* 抽出条件を組み立てる。 */
 QTodo a = new QTodo("a");
-Date basedt = new Date(LocalDate.of(2015, 2, 1).toEpochDay() * 24 * 60 * 60 * 1000);
 SQLQuery<?> query = queryFactory
         .from(a)
         .where(
                 a.doneFlg.eq(1)
-                        .or(a.dueDt.goe(basedt)
+                        .or(a.dueDt.goe(LocalDate.of(2015, 2, 1))
                                 .and(a.doneAt.isNull())));
 
 /* 取出すカラムとデータの取出し方を指定してクエリを発行する。 */
@@ -1214,16 +1211,11 @@ GROUP BY
 
 ```Java
 QTodo a = new QTodo("a");
-Timestamp basedtm = new Timestamp(
-        LocalDateTime.of(2015, 2, 1, 0, 0, 0)
-                .toEpochSecond(ZoneId.systemDefault().getRules()
-                        .getOffset(Instant.now()))
-                * 1000);
 SQLQuery<?> query = queryFactory.from(a);
 query.groupBy(a.postedBy);
 query.having(
         a.id.count().gt(1),
-        a.postedAt.max().lt(basedtm));
+        a.postedAt.max().lt(LocalDateTime.of(2015, 2, 1, 0, 0, 0)));
 List<Tuple> list = query.select(
         a.postedBy,
         a.id.count(),

@@ -16,7 +16,7 @@
 
 package cherry.tutorial.querydsl;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -225,12 +225,12 @@ public class FromClauseTest {
                 Long.class, a, "a_id");
         StringPath aPostedBy = Expressions.stringPath(
                 a, "a_posted_by");
-        DateTimePath<Timestamp> aPostedAt = Expressions.dateTimePath(
-                Timestamp.class, a, "a_posted_at");
+        DateTimePath<LocalDateTime> aPostedAt = Expressions.dateTimePath(
+                LocalDateTime.class, a, "a_posted_at");
         NumberPath<Integer> aDoneFlg = Expressions.numberPath(
                 Integer.class, a, "a_done_flg");
-        DateTimePath<Timestamp> aDoneAt = Expressions.dateTimePath(
-                Timestamp.class, a, "a_done_at");
+        DateTimePath<LocalDateTime> aDoneAt = Expressions.dateTimePath(
+                LocalDateTime.class, a, "a_done_at");
 
         /* 外側のSELECT文の抽出条件を組み立てる。 */
         SQLQuery<?> query = queryFactory
@@ -250,8 +250,8 @@ public class FromClauseTest {
         for (Tuple tuple : list) {
             Long valId = tuple.get(aId);
             String valPostedBy = tuple.get(aPostedBy);
-            Timestamp valPostedAt = tuple.get(aPostedAt);
-            Timestamp valDoneAt = tuple.get(aDoneAt);
+            LocalDateTime valPostedAt = tuple.get(aPostedAt);
+            LocalDateTime valDoneAt = tuple.get(aDoneAt);
             logger.info(
                     "{}: postedBy={}, postedAt={}, doneAt={}",
                     valId, valPostedBy, valPostedAt, valDoneAt);

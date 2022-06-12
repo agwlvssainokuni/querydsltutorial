@@ -24,27 +24,27 @@ public class QTodo extends com.querydsl.sql.RelationalPathBase<BTodo> {
 
     public static final QTodo todo = new QTodo("TODO");
 
-    public final DateTimePath<java.sql.Timestamp> createdAt = createDateTime("createdAt", java.sql.Timestamp.class);
+    public final DateTimePath<java.time.LocalDateTime> createdAt = createDateTime("createdAt", java.time.LocalDateTime.class);
 
     public final NumberPath<Integer> deletedFlg = createNumber("deletedFlg", Integer.class);
 
     public final StringPath description = createString("description");
 
-    public final DateTimePath<java.sql.Timestamp> doneAt = createDateTime("doneAt", java.sql.Timestamp.class);
+    public final DateTimePath<java.time.LocalDateTime> doneAt = createDateTime("doneAt", java.time.LocalDateTime.class);
 
     public final NumberPath<Integer> doneFlg = createNumber("doneFlg", Integer.class);
 
-    public final DatePath<java.sql.Date> dueDt = createDate("dueDt", java.sql.Date.class);
+    public final DatePath<java.time.LocalDate> dueDt = createDate("dueDt", java.time.LocalDate.class);
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
     public final NumberPath<Integer> lockVersion = createNumber("lockVersion", Integer.class);
 
-    public final DateTimePath<java.sql.Timestamp> postedAt = createDateTime("postedAt", java.sql.Timestamp.class);
+    public final DateTimePath<java.time.LocalDateTime> postedAt = createDateTime("postedAt", java.time.LocalDateTime.class);
 
     public final StringPath postedBy = createString("postedBy");
 
-    public final DateTimePath<java.sql.Timestamp> updatedAt = createDateTime("updatedAt", java.sql.Timestamp.class);
+    public final DateTimePath<java.time.LocalDateTime> updatedAt = createDateTime("updatedAt", java.time.LocalDateTime.class);
 
     public final com.querydsl.sql.PrimaryKey<BTodo> todoPkc = createPrimaryKey(id);
 

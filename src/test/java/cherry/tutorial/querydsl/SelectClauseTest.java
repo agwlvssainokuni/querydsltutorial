@@ -18,9 +18,9 @@ package cherry.tutorial.querydsl;
 
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-import java.sql.Date;
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -71,13 +71,14 @@ public class SelectClauseTest {
             Long valId = tuple.get(a.id);
             String valLoginId = tuple.get(a.loginId);
             String valName = tuple.get(a.name);
-            Timestamp valUpdatedAt = tuple.get(a.updatedAt);
-            Timestamp valCreatedAt = tuple.get(a.createdAt);
+            LocalDateTime valUpdatedAt = tuple.get(a.updatedAt);
+            LocalDateTime valCreatedAt = tuple.get(a.createdAt);
             Integer valLockVersion = tuple.get(a.lockVersion);
             Integer valDeletedFlg = tuple.get(a.deletedFlg);
             logger.info(
                     "{}: loginId={}, name={}, updatedAt={}, createdAt={}, lockVersion={}, deletedFlg={}",
-                    valId, valLoginId, valName, valUpdatedAt, valCreatedAt, valLockVersion, valDeletedFlg);
+                    valId, valLoginId, valName, valUpdatedAt, valCreatedAt, valLockVersion,
+                    valDeletedFlg);
         }
     }
 
@@ -95,13 +96,14 @@ public class SelectClauseTest {
             Long valId = tuple.get(a.id);
             String valLoginId = tuple.get(a.loginId);
             String valName = tuple.get(a.name);
-            Timestamp valUpdatedAt = tuple.get(a.updatedAt);
-            Timestamp valCreatedAt = tuple.get(a.createdAt);
+            LocalDateTime valUpdatedAt = tuple.get(a.updatedAt);
+            LocalDateTime valCreatedAt = tuple.get(a.createdAt);
             Integer valLockVersion = tuple.get(a.lockVersion);
             Integer valDeletedFlg = tuple.get(a.deletedFlg);
             logger.info(
                     "{}: loginId={}, name={}, updatedAt={}, createdAt={}, lockVersion={}, deletedFlg={}",
-                    valId, valLoginId, valName, valUpdatedAt, valCreatedAt, valLockVersion, valDeletedFlg);
+                    valId, valLoginId, valName, valUpdatedAt, valCreatedAt, valLockVersion,
+                    valDeletedFlg);
         }
     }
 
@@ -126,7 +128,8 @@ public class SelectClauseTest {
             Integer valDeletedFlg = (Integer) tuple[6];
             logger.info(
                     "{}: loginId={}, name={}, updatedAt={}, createdAt={}, lockVersion={}, deletedFlg={}",
-                    valId, valLoginId, valName, valUpdatedAt, valCreatedAt, valLockVersion, valDeletedFlg);
+                    valId, valLoginId, valName, valUpdatedAt, valCreatedAt, valLockVersion,
+                    valDeletedFlg);
         }
     }
 
@@ -309,8 +312,8 @@ public class SelectClauseTest {
             String valPostedBy = tuple.get(a.postedBy);
             Long valCount = tuple.get(a.id.count());
             Long valSum = tuple.get(a.id.sum());
-            Timestamp valMinPostedAt = tuple.get(a.postedAt.min());
-            Timestamp valMaxPostedAt = tuple.get(a.postedAt.max());
+            LocalDateTime valMinPostedAt = tuple.get(a.postedAt.min());
+            LocalDateTime valMaxPostedAt = tuple.get(a.postedAt.max());
             logger.info(
                     "{}: COUNT(id)={}, SUM(id)={}, MIN(postedAt)={}, MAX(postedAt)={}",
                     valPostedBy, valCount, valSum, valMinPostedAt, valMaxPostedAt);
@@ -358,10 +361,9 @@ public class SelectClauseTest {
         SQLQuery<?> query = queryFactory.from(a);
 
         /* CASE式を組立てる。 */
-        Date basedt = new Date(LocalDate.of(2015, 2, 1).toEpochDay() * 24 * 60 * 60 * 1000);
         Expression<String> doneDesc = Expressions.cases()
                 .when(a.doneFlg.eq(1)).then("実施済")
-                .when(a.dueDt.lt(basedt)).then("未実施(期限内)")
+                .when(a.dueDt.lt(LocalDate.of(2015, 2, 1))).then("未実施(期限内)")
                 .otherwise("未実施(期限切)");
 
         /* 取出すカラムとデータの取出し方を指定してクエリを発行する。 */
@@ -375,7 +377,7 @@ public class SelectClauseTest {
         /* クエリの結果を表示する。 */
         for (Tuple tuple : list) {
             Long valId = tuple.get(a.id);
-            Date valDueDt = tuple.get(a.dueDt);
+            LocalDate valDueDt = tuple.get(a.dueDt);
             Integer valDoneFlg = tuple.get(a.doneFlg);
             String valDoneDesc = tuple.get(doneDesc);
             logger.info(

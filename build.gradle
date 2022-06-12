@@ -73,6 +73,10 @@ task codegen {
             namePrefix: "Q",
             beanPrefix: "B",
             beanAddToString: true
-        )
+        ) {
+            customType(className: "com.querydsl.sql.types.JSR310LocalDateTimeType")
+            customType(className: "com.querydsl.sql.types.JSR310LocalDateType")
+            customType(className: "com.querydsl.sql.types.JSR310LocalTimeType")
+        }
     }
 }

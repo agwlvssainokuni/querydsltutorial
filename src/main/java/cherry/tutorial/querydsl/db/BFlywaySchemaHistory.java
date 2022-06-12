@@ -16,7 +16,7 @@ public class BFlywaySchemaHistory {
 
     private String installedBy;
 
-    private java.sql.Timestamp installedOn;
+    private java.time.LocalDateTime installedOn;
 
     private Integer installedRank;
 
@@ -60,11 +60,11 @@ public class BFlywaySchemaHistory {
         this.installedBy = installedBy;
     }
 
-    public java.sql.Timestamp getInstalledOn() {
+    public java.time.LocalDateTime getInstalledOn() {
         return installedOn;
     }
 
-    public void setInstalledOn(java.sql.Timestamp installedOn) {
+    public void setInstalledOn(java.time.LocalDateTime installedOn) {
         this.installedOn = installedOn;
     }
 

@@ -8,7 +8,7 @@ import javax.annotation.processing.Generated;
 @Generated("com.querydsl.codegen.BeanSerializer")
 public class BAuthor {
 
-    private java.sql.Timestamp createdAt;
+    private java.time.LocalDateTime createdAt;
 
     private Integer deletedFlg;
 
@@ -20,13 +20,13 @@ public class BAuthor {
 
     private String name;
 
-    private java.sql.Timestamp updatedAt;
+    private java.time.LocalDateTime updatedAt;
 
-    public java.sql.Timestamp getCreatedAt() {
+    public java.time.LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(java.sql.Timestamp createdAt) {
+    public void setCreatedAt(java.time.LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
@@ -70,11 +70,11 @@ public class BAuthor {
         this.name = name;
     }
 
-    public java.sql.Timestamp getUpdatedAt() {
+    public java.time.LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(java.sql.Timestamp updatedAt) {
+    public void setUpdatedAt(java.time.LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
 

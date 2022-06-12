@@ -24,7 +24,7 @@ public class QAuthor extends com.querydsl.sql.RelationalPathBase<BAuthor> {
 
     public static final QAuthor author = new QAuthor("AUTHOR");
 
-    public final DateTimePath<java.sql.Timestamp> createdAt = createDateTime("createdAt", java.sql.Timestamp.class);
+    public final DateTimePath<java.time.LocalDateTime> createdAt = createDateTime("createdAt", java.time.LocalDateTime.class);
 
     public final NumberPath<Integer> deletedFlg = createNumber("deletedFlg", Integer.class);
 
@@ -36,7 +36,7 @@ public class QAuthor extends com.querydsl.sql.RelationalPathBase<BAuthor> {
 
     public final StringPath name = createString("name");
 
-    public final DateTimePath<java.sql.Timestamp> updatedAt = createDateTime("updatedAt", java.sql.Timestamp.class);
+    public final DateTimePath<java.time.LocalDateTime> updatedAt = createDateTime("updatedAt", java.time.LocalDateTime.class);
 
     public final com.querydsl.sql.PrimaryKey<BAuthor> authorPkc = createPrimaryKey(id);
 

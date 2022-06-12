@@ -32,7 +32,7 @@ public class QFlywaySchemaHistory extends com.querydsl.sql.RelationalPathBase<BF
 
     public final StringPath installedBy = createString("installedBy");
 
-    public final DateTimePath<java.sql.Timestamp> installedOn = createDateTime("installedOn", java.sql.Timestamp.class);
+    public final DateTimePath<java.time.LocalDateTime> installedOn = createDateTime("installedOn", java.time.LocalDateTime.class);
 
     public final NumberPath<Integer> installedRank = createNumber("installedRank", Integer.class);
 

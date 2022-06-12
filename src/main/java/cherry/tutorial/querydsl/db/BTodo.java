@@ -8,33 +8,33 @@ import javax.annotation.processing.Generated;
 @Generated("com.querydsl.codegen.BeanSerializer")
 public class BTodo {
 
-    private java.sql.Timestamp createdAt;
+    private java.time.LocalDateTime createdAt;
 
     private Integer deletedFlg;
 
     private String description;
 
-    private java.sql.Timestamp doneAt;
+    private java.time.LocalDateTime doneAt;
 
     private Integer doneFlg;
 
-    private java.sql.Date dueDt;
+    private java.time.LocalDate dueDt;
 
     private Long id;
 
     private Integer lockVersion;
 
-    private java.sql.Timestamp postedAt;
+    private java.time.LocalDateTime postedAt;
 
     private String postedBy;
 
-    private java.sql.Timestamp updatedAt;
+    private java.time.LocalDateTime updatedAt;
 
-    public java.sql.Timestamp getCreatedAt() {
+    public java.time.LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(java.sql.Timestamp createdAt) {
+    public void setCreatedAt(java.time.LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
 
@@ -54,11 +54,11 @@ public class BTodo {
         this.description = description;
     }
 
-    public java.sql.Timestamp getDoneAt() {
+    public java.time.LocalDateTime getDoneAt() {
         return doneAt;
     }
 
-    public void setDoneAt(java.sql.Timestamp doneAt) {
+    public void setDoneAt(java.time.LocalDateTime doneAt) {
         this.doneAt = doneAt;
     }
 
@@ -70,11 +70,11 @@ public class BTodo {
         this.doneFlg = doneFlg;
     }
 
-    public java.sql.Date getDueDt() {
+    public java.time.LocalDate getDueDt() {
         return dueDt;
     }
 
-    public void setDueDt(java.sql.Date dueDt) {
+    public void setDueDt(java.time.LocalDate dueDt) {
         this.dueDt = dueDt;
     }
 
@@ -94,11 +94,11 @@ public class BTodo {
         this.lockVersion = lockVersion;
     }
 
-    public java.sql.Timestamp getPostedAt() {
+    public java.time.LocalDateTime getPostedAt() {
         return postedAt;
     }
 
-    public void setPostedAt(java.sql.Timestamp postedAt) {
+    public void setPostedAt(java.time.LocalDateTime postedAt) {
         this.postedAt = postedAt;
     }
 
@@ -110,11 +110,11 @@ public class BTodo {
         this.postedBy = postedBy;
     }
 
-    public java.sql.Timestamp getUpdatedAt() {
+    public java.time.LocalDateTime getUpdatedAt() {
         return updatedAt;
     }
 
-    public void setUpdatedAt(java.sql.Timestamp updatedAt) {
+    public void setUpdatedAt(java.time.LocalDateTime updatedAt) {
         this.updatedAt = updatedAt;
     }
 

@@ -16,10 +16,7 @@
 
 package cherry.tutorial.querydsl;
 
-import java.sql.Timestamp;
-import java.time.Instant;
 import java.time.LocalDateTime;
-import java.time.ZoneId;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -53,6 +50,7 @@ public class AdvancedUsageTest {
 
     @Test
     public void sec0501_GROUPBY() {
+        logger.info("5.1 GROUP BY句");
 
         QTodo a = new QTodo("a");
         SQLQuery<?> query = queryFactory.from(a);
@@ -69,8 +67,8 @@ public class AdvancedUsageTest {
             String valPostedBy = tuple.get(a.postedBy);
             Long valCount = tuple.get(a.id.count());
             Long valSum = tuple.get(a.id.sum());
-            Timestamp valMinPostedAt = tuple.get(a.postedAt.min());
-            Timestamp valMaxPostedAt = tuple.get(a.postedAt.max());
+            LocalDateTime valMinPostedAt = tuple.get(a.postedAt.min());
+            LocalDateTime valMaxPostedAt = tuple.get(a.postedAt.max());
             logger.info(
                     "{}: COUNT(id)={}, SUM(id)={}, MIN(postedAt)={}, MAX(postedAt)={}",
                     valPostedBy, valCount, valSum, valMinPostedAt, valMaxPostedAt);
@@ -79,18 +77,14 @@ public class AdvancedUsageTest {
 
     @Test
     public void sec0502_HAVING() {
+        logger.info("5.2 HAVING句");
 
         QTodo a = new QTodo("a");
-        Timestamp basedtm = new Timestamp(
-                LocalDateTime.of(2015, 2, 1, 0, 0, 0)
-                        .toEpochSecond(ZoneId.systemDefault().getRules()
-                                .getOffset(Instant.now()))
-                        * 1000);
         SQLQuery<?> query = queryFactory.from(a);
         query.groupBy(a.postedBy);
         query.having(
                 a.id.count().gt(1),
-                a.postedAt.max().lt(basedtm));
+                a.postedAt.max().lt(LocalDateTime.of(2015, 2, 1, 0, 0, 0)));
         List<Tuple> list = query.select(
                 a.postedBy,
                 a.id.count(),
@@ -103,8 +97,8 @@ public class AdvancedUsageTest {
             String valPostedBy = tuple.get(a.postedBy);
             Long valCount = tuple.get(a.id.count());
             Long valSum = tuple.get(a.id.sum());
-            Timestamp valMinPostedAt = tuple.get(a.postedAt.min());
-            Timestamp valMaxPostedAt = tuple.get(a.postedAt.max());
+            LocalDateTime valMinPostedAt = tuple.get(a.postedAt.min());
+            LocalDateTime valMaxPostedAt = tuple.get(a.postedAt.max());
             logger.info(
                     "{}: COUNT(id)={}, SUM(id)={}, MIN(postedAt)={}, MAX(postedAt)={}",
                     valPostedBy, valCount, valSum, valMinPostedAt, valMaxPostedAt);
@@ -113,6 +107,7 @@ public class AdvancedUsageTest {
 
     @Test
     public void sec0503_ORDERBY() {
+        logger.info("5.3 ORDER BY句");
 
         QTodo a = new QTodo("a");
         SQLQuery<?> query = queryFactory.from(a);
@@ -130,8 +125,8 @@ public class AdvancedUsageTest {
             String valPostedBy = tuple.get(a.postedBy);
             Long valCount = tuple.get(a.id.count());
             Long valSum = tuple.get(a.id.sum());
-            Timestamp valMinPostedAt = tuple.get(a.postedAt.min());
-            Timestamp valMaxPostedAt = tuple.get(a.postedAt.max());
+            LocalDateTime valMinPostedAt = tuple.get(a.postedAt.min());
+            LocalDateTime valMaxPostedAt = tuple.get(a.postedAt.max());
             logger.info(
                     "{}: COUNT(id)={}, SUM(id)={}, MIN(postedAt)={}, MAX(postedAt)={}",
                     valPostedBy, valCount, valSum, valMinPostedAt, valMaxPostedAt);
@@ -140,6 +135,7 @@ public class AdvancedUsageTest {
 
     @Test
     public void sec0504_UNION() {
+        logger.info("5.4 UNION句");
 
         /* UNION句でつなげるSELECT文を組み立てる。 */
         QTodo a = new QTodo("a");

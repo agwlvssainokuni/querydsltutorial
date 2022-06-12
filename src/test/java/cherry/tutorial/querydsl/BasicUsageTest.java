@@ -16,7 +16,7 @@
 
 package cherry.tutorial.querydsl;
 
-import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -61,8 +61,8 @@ public class BasicUsageTest {
             Long valId = tuple.get(a.id);
             String valLoginId = tuple.get(a.loginId);
             String valName = tuple.get(a.name);
-            Timestamp valUpdatedAt = tuple.get(a.updatedAt);
-            Timestamp valCreatedAt = tuple.get(a.createdAt);
+            LocalDateTime valUpdatedAt = tuple.get(a.updatedAt);
+            LocalDateTime valCreatedAt = tuple.get(a.createdAt);
             Integer valLockVersion = tuple.get(a.lockVersion);
             Integer valDeletedFlg = tuple.get(a.deletedFlg);
             logger.info(
@@ -87,8 +87,8 @@ public class BasicUsageTest {
             Long valId = entity.getId();
             String valLoginId = entity.getLoginId();
             String valName = entity.getName();
-            Timestamp valUpdatedAt = entity.getUpdatedAt();
-            Timestamp valCreatedAt = entity.getCreatedAt();
+            LocalDateTime valUpdatedAt = entity.getUpdatedAt();
+            LocalDateTime valCreatedAt = entity.getCreatedAt();
             Integer valLockVersion = entity.getLockVersion();
             Integer valDeletedFlg = entity.getDeletedFlg();
             logger.info(

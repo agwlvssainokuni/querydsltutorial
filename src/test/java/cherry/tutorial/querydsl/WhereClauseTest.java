@@ -16,9 +16,8 @@
 
 package cherry.tutorial.querydsl;
 
-import java.sql.Date;
-import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -72,10 +71,10 @@ public class WhereClauseTest {
         /* クエリの結果を表示する。 */
         for (Tuple tuple : list) {
             Long valId = tuple.get(a.id);
-            Timestamp valPostedAt = tuple.get(a.postedAt);
-            Date valDueDt = tuple.get(a.dueDt);
+            LocalDateTime valPostedAt = tuple.get(a.postedAt);
+            LocalDate valDueDt = tuple.get(a.dueDt);
             Integer valDoneFlg = tuple.get(a.doneFlg);
-            Timestamp valDoneAt = tuple.get(a.doneAt);
+            LocalDateTime valDoneAt = tuple.get(a.doneAt);
             logger.info(
                     "{}: postedAt={}, dueDt={}, doneFlg={}, doneAt={}",
                     valId, valPostedAt, valDueDt, valDoneFlg, valDoneAt);
@@ -107,10 +106,10 @@ public class WhereClauseTest {
         /* クエリの結果を表示する。 */
         for (Tuple tuple : list) {
             Long valId = tuple.get(a.id);
-            Timestamp valPostedAt = tuple.get(a.postedAt);
-            Date valDueDt = tuple.get(a.dueDt);
+            LocalDateTime valPostedAt = tuple.get(a.postedAt);
+            LocalDate valDueDt = tuple.get(a.dueDt);
             Integer valDoneFlg = tuple.get(a.doneFlg);
-            Timestamp valDoneAt = tuple.get(a.doneAt);
+            LocalDateTime valDoneAt = tuple.get(a.doneAt);
             logger.info(
                     "{}: postedAt={}, dueDt={}, doneFlg={}, doneAt={}",
                     valId, valPostedAt, valDueDt, valDoneFlg, valDoneAt);
@@ -123,12 +122,11 @@ public class WhereClauseTest {
 
         /* 抽出条件を組み立てる。 */
         QTodo a = new QTodo("a");
-        Date basedt = new Date(LocalDate.of(2015, 2, 1).toEpochDay() * 24 * 60 * 60 * 1000);
         SQLQuery<?> query = queryFactory
                 .from(a)
                 .where(
                         a.doneFlg.eq(1)
-                                .or(a.dueDt.goe(basedt))
+                                .or(a.dueDt.goe(LocalDate.of(2015, 2, 1)))
                                 .and(a.doneAt.isNull()));
 
         /* 取出すカラムとデータの取出し方を指定してクエリを発行する。 */
@@ -143,10 +141,10 @@ public class WhereClauseTest {
         /* クエリの結果を表示する。 */
         for (Tuple tuple : list) {
             Long valId = tuple.get(a.id);
-            Timestamp valPostedAt = tuple.get(a.postedAt);
-            Date valDueDt = tuple.get(a.dueDt);
+            LocalDateTime valPostedAt = tuple.get(a.postedAt);
+            LocalDate valDueDt = tuple.get(a.dueDt);
             Integer valDoneFlg = tuple.get(a.doneFlg);
-            Timestamp valDoneAt = tuple.get(a.doneAt);
+            LocalDateTime valDoneAt = tuple.get(a.doneAt);
             logger.info(
                     "{}: postedAt={}, dueDt={}, doneFlg={}, doneAt={}",
                     valId, valPostedAt, valDueDt, valDoneFlg, valDoneAt);
@@ -159,12 +157,11 @@ public class WhereClauseTest {
 
         /* 抽出条件を組み立てる。 */
         QTodo a = new QTodo("a");
-        Date basedt = new Date(LocalDate.of(2015, 2, 1).toEpochDay() * 24 * 60 * 60 * 1000);
         SQLQuery<?> query = queryFactory
                 .from(a)
                 .where(
                         a.doneFlg.eq(1)
-                                .or(a.dueDt.goe(basedt)
+                                .or(a.dueDt.goe(LocalDate.of(2015, 2, 1))
                                         .and(a.doneAt.isNull())));
 
         /* 取出すカラムとデータの取出し方を指定してクエリを発行する。 */
@@ -179,10 +176,10 @@ public class WhereClauseTest {
         /* クエリの結果を表示する。 */
         for (Tuple tuple : list) {
             Long valId = tuple.get(a.id);
-            Timestamp valPostedAt = tuple.get(a.postedAt);
-            Date valDueDt = tuple.get(a.dueDt);
+            LocalDateTime valPostedAt = tuple.get(a.postedAt);
+            LocalDate valDueDt = tuple.get(a.dueDt);
             Integer valDoneFlg = tuple.get(a.doneFlg);
-            Timestamp valDoneAt = tuple.get(a.doneAt);
+            LocalDateTime valDoneAt = tuple.get(a.doneAt);
             logger.info(
                     "{}: postedAt={}, dueDt={}, doneFlg={}, doneAt={}",
                     valId, valPostedAt, valDueDt, valDoneFlg, valDoneAt);
