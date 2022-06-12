@@ -51,6 +51,7 @@ public class WhereClauseTest {
 
     @Test
     public void sec040101_抽出条件の記述方法_単一条件() {
+        logger.info("4.1.1 単一条件");
 
         /* 抽出条件を組み立てる。 */
         QTodo a = new QTodo("a");
@@ -83,6 +84,7 @@ public class WhereClauseTest {
 
     @Test
     public void sec040102_抽出条件の記述方法_複合条件() {
+        logger.info("4.1.2 複合条件");
 
         /* 抽出条件を組み立てる。 */
         QTodo a = new QTodo("a");
@@ -117,6 +119,7 @@ public class WhereClauseTest {
 
     @Test
     public void sec040103_抽出条件の記述方法_条件の組合せ_1() {
+        logger.info("4.1.3 条件の組合せ");
 
         /* 抽出条件を組み立てる。 */
         QTodo a = new QTodo("a");
@@ -152,6 +155,7 @@ public class WhereClauseTest {
 
     @Test
     public void sec040103_抽出条件の記述方法_条件の組合せ_2() {
+        logger.info("4.1.3 条件の組合せ");
 
         /* 抽出条件を組み立てる。 */
         QTodo a = new QTodo("a");
@@ -187,6 +191,7 @@ public class WhereClauseTest {
 
     @Test
     public void sec040205_条件式_IN() {
+        logger.info("4.2.5 IN");
 
         /* 抽出条件を組み立てる。 */
         QAuthor a = new QAuthor("a");
@@ -217,6 +222,7 @@ public class WhereClauseTest {
 
     @Test
     public void sec040206_条件式_EXISTS() {
+        logger.info("4.2.6 EXISTS");
 
         /* 抽出条件を組み立てる。 */
         QAuthor a = new QAuthor("a");

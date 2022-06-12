@@ -57,6 +57,7 @@ public class SelectClauseTest {
 
     @Test
     public void sec020101_カラムを絞って照会する() {
+        logger.info("2.1.1 カラムを絞って照会する");
 
         QAuthor a = new QAuthor("a");
         SQLQuery<?> query = queryFactory.from(a);
@@ -82,6 +83,7 @@ public class SelectClauseTest {
 
     @Test
     public void sec020102_全てのカラムを照会する() {
+        logger.info("2.1.2 全てのカラムを照会する");
 
         QAuthor a = new QAuthor("a");
         SQLQuery<?> query = queryFactory.from(a);
@@ -105,6 +107,7 @@ public class SelectClauseTest {
 
     @Test
     public void sec020103_アスタリスクを指定して照会する() {
+        logger.info("2.1.3 アスタリスク「*」を指定して照会する");
 
         QAuthor a = new QAuthor("a");
 
@@ -129,6 +132,7 @@ public class SelectClauseTest {
 
     @Test
     public void sec020104_カラムにエイリアスを付与する() {
+        logger.info("2.1.4 カラムにエイリアス(別名)を付与する");
 
         QAuthor a = new QAuthor("a");
         SQLQuery<?> query = queryFactory.from(a);
@@ -153,6 +157,7 @@ public class SelectClauseTest {
 
     @Test
     public void sec020201_定数値をカラムとして照会する() {
+        logger.info("2.2.1 定数値をカラムとして照会する");
 
         Expression<Integer> const1 = Expressions.constant(123456789);
         Expression<String> const2 = Expressions.constant("CONST TEXT");
@@ -177,6 +182,7 @@ public class SelectClauseTest {
 
     @Test
     public void sec020202_定数値のカラムにエイリアスを付与する() {
+        logger.info("2.2.2 定数値のカラムにエイリアス(別名)を付与する");
 
         Expression<Integer> const1 = Expressions.constant(123456789);
         Expression<String> const2 = Expressions.constant("CONST TEXT");
@@ -203,6 +209,7 @@ public class SelectClauseTest {
 
     @Test
     public void sec020301_カラムに対する算術計算_加減乗除() {
+        logger.info("2.3.1 加減乗除");
 
         QAuthor a = new QAuthor("a");
         SQLQuery<?> query = queryFactory.from(a);
@@ -230,6 +237,7 @@ public class SelectClauseTest {
 
     @Test
     public void sec020302_カラムに対する算術計算_計算順序() {
+        logger.info("2.3.2 計算順序");
 
         QAuthor a = new QAuthor("a");
         SQLQuery<?> query = queryFactory.from(a);
@@ -256,6 +264,7 @@ public class SelectClauseTest {
 
     @Test
     public void sec020401_カラムに対する関数適用() {
+        logger.info("2.4.1 関数適用");
 
         QAuthor a = new QAuthor("a");
         SQLQuery<?> query = queryFactory.from(a);
@@ -283,6 +292,7 @@ public class SelectClauseTest {
 
     @Test
     public void sec020408_カラムに対する関数適用_集約関数() {
+        logger.info("2.4.8 集約関数(インスタンスメソッド)");
 
         QTodo a = new QTodo("a");
         SQLQuery<?> query = queryFactory.from(a);
@@ -309,6 +319,7 @@ public class SelectClauseTest {
 
     @Test
     public void sec020501_CASE式を指定する_単純CASE式() {
+        logger.info("2.5.1 単純CASE式");
 
         /* 抽出条件を組み立てる。 */
         QTodo a = new QTodo("a");
@@ -340,6 +351,7 @@ public class SelectClauseTest {
 
     @Test
     public void sec020502_CASE式を指定する_検索CASE式() {
+        logger.info("2.5.2 検索CASE式");
 
         /* 抽出条件を組み立てる。 */
         QTodo a = new QTodo("a");
@@ -374,6 +386,7 @@ public class SelectClauseTest {
 
     @Test
     public void sec0206_スカラサブクエリを指定する() {
+        logger.info("2.6 スカラサブクエリを指定する");
 
         /* 抽出条件を組み立てる。 */
         QTodo a = new QTodo("a");

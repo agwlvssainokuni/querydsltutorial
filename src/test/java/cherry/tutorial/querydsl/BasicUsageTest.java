@@ -47,6 +47,7 @@ public class BasicUsageTest {
 
     @Test
     public void sec0101_Tupleとして取出す() {
+        logger.info("1.1 Tupleとして取出す");
 
         /* 抽出条件を組み立てる。 */
         QAuthor a = new QAuthor("a");
@@ -72,6 +73,7 @@ public class BasicUsageTest {
 
     @Test
     public void sec0102_Beanとして取出す() {
+        logger.info("1.2 Beanとして取出す");
 
         /* 抽出条件を組み立てる。 */
         QAuthor a = new QAuthor("a");

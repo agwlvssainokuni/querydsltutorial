@@ -157,6 +157,7 @@ public class AdvancedUsageTest {
                 .from(b);
 
         /* UNIONを組み立てる。 */
+        @SuppressWarnings("unchecked")
         Union<Tuple> query = queryFactory.query().union(queryA, queryB);
 
         /* クエリを発行する。 */

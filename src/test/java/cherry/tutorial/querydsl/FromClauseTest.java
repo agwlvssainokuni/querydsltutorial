@@ -54,6 +54,7 @@ public class FromClauseTest {
 
     @Test
     public void sec0301_単一表を指定する() {
+        logger.info("3.1 単一表を指定する");
 
         /* 抽出条件を組み立てる。 */
         QTodo a = new QTodo("a");
@@ -77,6 +78,7 @@ public class FromClauseTest {
 
     @Test
     public void sec030201_複数表を指定して結合する_内部結合() {
+        logger.info("3.2.1 内部結合");
 
         /* 抽出条件を組み立てる。 */
         QTodo a = new QTodo("a");
@@ -107,6 +109,7 @@ public class FromClauseTest {
 
     @Test
     public void sec030202_複数表を指定して結合する_左外部結合() {
+        logger.info("3.2.2 左外部結合");
 
         /* 抽出条件を組み立てる。 */
         QTodo a = new QTodo("a");
@@ -137,6 +140,7 @@ public class FromClauseTest {
 
     @Test
     public void sec030203_複数表を指定して結合する_右外部結合() {
+        logger.info("3.2.3 右外部結合");
 
         /* 抽出条件を組み立てる。 */
         QTodo a = new QTodo("a");
@@ -168,6 +172,7 @@ public class FromClauseTest {
 
     // @Test
     public void sec030204_複数表を指定して結合する_全外部結合() {
+        logger.info("3.2.4 全外部結合");
 
         /* 抽出条件を組み立てる。 */
         QTodo a = new QTodo("a");
@@ -199,6 +204,7 @@ public class FromClauseTest {
 
     @Test
     public void sec0303_SELECT文をFROM句に指定する() {
+        logger.info("3.3 SELECT文をFROM句に指定する");
 
         /* FROM句に指定するSELECT文を組み立てる。 */
         QTodo x = new QTodo("x");
