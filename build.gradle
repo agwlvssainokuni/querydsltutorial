@@ -67,12 +67,12 @@ task codegen {
             jdbcUser: "sa",
             jdbcPassword: "",
             targetFolder: file("src/main/java"),
-            exportBeans: true,
-            schemaPattern: "",
             packageName: "cherry.tutorial.querydsl.db",
+            schemaPattern: "",
+            exportBeans: true,
+            beanAddToString: true,
             namePrefix: "Q",
-            beanPrefix: "B",
-            beanAddToString: true
+            beanPrefix: "B"
         ) {
             customType(className: "com.querydsl.sql.types.JSR310LocalDateTimeType")
             customType(className: "com.querydsl.sql.types.JSR310LocalDateType")
