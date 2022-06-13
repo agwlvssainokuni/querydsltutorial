@@ -86,11 +86,11 @@ List<Tuple> list = query.select(
 
 ```SQL
 SELECT
-	a.id,
-	a.login_id,
-	a.name
+    a.id,
+    a.login_id,
+    a.name
 FROM
-	author AS a
+    author AS a
 ```
 
 #### 2.1.2 全てのカラムを照会する
@@ -108,15 +108,15 @@ List<Tuple> list = query.select(
 
 ```SQL
 SELECT
-	a.id,
-	a.login_id,
-	a.name,
-	a.updated_at,
-	a.created_at,
-	a.lock_version,
-	a.deleted_flg
+    a.id,
+    a.login_id,
+    a.name,
+    a.updated_at,
+    a.created_at,
+    a.lock_version,
+    a.deleted_flg
 FROM
-	author AS a
+    author AS a
 ```
 
 #### 2.1.3 アスタリスク「*」を指定して照会する
@@ -136,9 +136,9 @@ List<Object[]> list = query.select(
 
 ```SQL
 SELECT
-	*
+    *
 FROM
-	author AS a
+    author AS a
 ```
 
 #### 2.1.4 カラムにエイリアス(別名)を付与する
@@ -158,9 +158,9 @@ List<Tuple> list = query.select(
 
 ```SQL
 SELECT
-	a.id		AS alias1,
-	a.login_id	AS alias2,
-	a.name		AS alias3
+    a.id        AS alias1,
+    a.login_id  AS alias2,
+    a.name      AS alias3
 FROM
     author AS a
 ```
@@ -186,11 +186,11 @@ List<Tuple> list = query.select(
 
 ```SQL
 SELECT
-	a.id,
-	123456789,
-	'CONST TEXT'
+    a.id,
+    123456789,
+    'CONST TEXT'
 FROM
-	author AS a
+    author AS a
 ```
 
 #### 2.2.2 定数値のカラムにエイリアス(別名)を付与する
@@ -214,9 +214,9 @@ List<Tuple> list = query.select(
 
 ```SQL
 SELECT
-	a.id,
-	123456789		AS alias1,
-	'CONST TEXT'    AS alias2
+    a.id,
+    123456789       AS alias1,
+    'CONST TEXT'    AS alias2
 FROM
     author AS a
 ```
@@ -250,14 +250,14 @@ List<Tuple> list = query.select(
 
 ```SQL
 SELECT
-	a.id,
-	a.id + 2,
-	a.id - 2,
-	a.id * 2,
-	a.id / 2,
-	MOD(a.id, 2)
+    a.id,
+    a.id + 2,
+    a.id - 2,
+    a.id * 2,
+    a.id / 2,
+    MOD(a.id, 2)
 FROM
-	author AS a
+    author AS a
 ```
 
 #### 2.3.2 計算順序
@@ -280,13 +280,13 @@ List<Tuple> list = query.select(
 
 ```SQL
 SELECT
-	a.id,
-	(a.id + 2) * 2,
-	a.id * 2 + 2,
-	((a.id + 2) * 2 - 2) / 2,
-	(a.id + 2) * (a.id - 2)
+    a.id,
+    (a.id + 2) * 2,
+    a.id * 2 + 2,
+    ((a.id + 2) * 2 - 2) / 2,
+    (a.id + 2) * (a.id - 2)
 FROM
-	author AS a
+    author AS a
 ```
 
 ### 2.4 カラム(または定数値)に対する関数適用
@@ -310,14 +310,14 @@ List<Tuple> list = query.select(
 
 ```SQL
 SELECT
-	a.id,
-	a.login_id,
-	a.name,
-	LENGTH(a.login_id),
-	CONCAT(a.login_id, a.name),
-	LPAD(a.login_id, 10, 'X')
+    a.id,
+    a.login_id,
+    a.name,
+    LENGTH(a.login_id),
+    CONCAT(a.login_id, a.name),
+    LPAD(a.login_id, 10, 'X')
 FROM
-	author AS a
+    author AS a
 ```
 
 #### 2.4.2 数値関数(インスタンスメソッド)
@@ -452,15 +452,15 @@ List<Tuple> list = query.select(
 
 ```SQL
 SELECT
-	a.posted_by,
-	COUNT(a.id),
-	SUM(a.id),
-	MIN(a.posted_at),
-	MAX(a.posted_at)
+    a.posted_by,
+    COUNT(a.id),
+    SUM(a.id),
+    MIN(a.posted_at),
+    MAX(a.posted_at)
 FROM
-	todo AS a
+    todo AS a
 GROUP BY
-	a.posted_by
+    a.posted_by
 ```
 
 ### 2.5 CASE式を指定する
@@ -491,15 +491,15 @@ List<Tuple> list = query.select(
 
 ```SQL
 SELECT
-	a.id,
-	a.done_flg,
-	CASE a.done_flg
-		WHEN 0 THEN '未実施'
-		WHEN 1 THEN '実施済'
-		ELSE '不定'
-	END
+    a.id,
+    a.done_flg,
+    CASE a.done_flg
+        WHEN 0 THEN '未実施'
+        WHEN 1 THEN '実施済'
+        ELSE '不定'
+    END
 FROM
-	todo AS a
+    todo AS a
 ```
 
 #### 2.5.2 検索CASE式
@@ -530,16 +530,16 @@ List<Tuple> list = query.select(
 
 ```SQL
 SELECT
-	a.id,
-	a.due_dt,
-	a.done_flg,
-	CASE
-		WHEN a.done_flg = 1 THEN '実施済'
-		WHEN a.due_dt < '2015-02-01' THEN '未実施(期限内)'
-		ELSE '未実施(期限切)'
-	END
+    a.id,
+    a.due_dt,
+    a.done_flg,
+    CASE
+        WHEN a.done_flg = 1 THEN '実施済'
+        WHEN a.due_dt < '2015-02-01' THEN '未実施(期限内)'
+        ELSE '未実施(期限切)'
+    END
 FROM
-	todo AS a
+    todo AS a
 ```
 
 
@@ -572,20 +572,20 @@ List<Tuple> list = query.select(
 
 ```SQL
 SELECT
-	a.id,
-	a.posted_by,
-	(
-		SELECT
-			b.name
-		FROM
-			author AS b
-		WHERE
-			b.login_id = a.posted_by
-			AND
-			b.deleted_flg = 0
-	)
+    a.id,
+    a.posted_by,
+    (
+        SELECT
+            b.name
+        FROM
+            author AS b
+        WHERE
+            b.login_id = a.posted_by
+            AND
+            b.deleted_flg = 0
+    )
 FROM
-	todo AS a
+    todo AS a
 ```
 
 ## 3. FROM句の書き方
@@ -608,10 +608,10 @@ List<Tuple> list = query.select(
 
 ```SQL
 SELECT
-	a.id,
-	a.posted_by
+    a.id,
+    a.posted_by
 FROM
-	todo AS a
+    todo AS a
 ```
 
 ### 3.2 複数表を指定して結合する
@@ -641,16 +641,16 @@ List<Tuple> list = query.select(
 
 ```SQL
 SELECT
-	a.id,
-	a.posted_by,
-	b.name
+    a.id,
+    a.posted_by,
+    b.name
 FROM
-	todo AS a
-	JOIN author AS b
-	ON
-		b.login_id = a.posted_by
-		AND
-		b.deleted_flg = 0
+    todo AS a
+    JOIN author AS b
+    ON
+        b.login_id = a.posted_by
+        AND
+        b.deleted_flg = 0
 ```
 
 #### 3.2.2 左外部結合
@@ -679,16 +679,16 @@ List<Tuple> list = query.select(
 
 ```SQL
 SELECT
-	a.id,
-	a.posted_by,
-	b.name
+    a.id,
+    a.posted_by,
+    b.name
 FROM
-	todo AS a
-	LEFT JOIN author AS b
-	ON
-		b.login_id = a.posted_by
-		AND
-		b.deleted_flg = 0
+    todo AS a
+    LEFT JOIN author AS b
+    ON
+        b.login_id = a.posted_by
+        AND
+        b.deleted_flg = 0
 ```
 
 #### 3.2.3 右外部結合
@@ -718,16 +718,16 @@ List<Tuple> list = query.select(
 
 ```SQL
 SELECT
-	a.id,
-	a.posted_by,
-	b.name
+    a.id,
+    a.posted_by,
+    b.name
 FROM
-	todo AS a
-	RIGHT JOIN author AS b
-	ON
-		b.login_id = a.posted_by
-		AND
-		b.deleted_flg = 0
+    todo AS a
+    RIGHT JOIN author AS b
+    ON
+        b.login_id = a.posted_by
+        AND
+        b.deleted_flg = 0
 ```
 
 #### 3.2.4 全外部結合
@@ -757,16 +757,16 @@ List<Tuple> list = query.select(
 
 ```SQL
 SELECT
-	a.id,
-	a.posted_by,
-	b.name
+    a.id,
+    a.posted_by,
+    b.name
 FROM
-	todo AS a
-	FULL JOIN author AS b
-	ON
-		b.login_id = a.posted_by
-		AND
-		b.deleted_flg = 0
+    todo AS a
+    FULL JOIN author AS b
+    ON
+        b.login_id = a.posted_by
+        AND
+        b.deleted_flg = 0
 ```
 
 ### 3.3 SELECT文をFROM句に指定する
@@ -822,25 +822,25 @@ List<Tuple> list = query.select(
 
 ```SQL
 SELECT
-	a.a_id,
-	a.a_posted_by,
-	a.a_posted_at,
-	a.a_done_at
+    a.a_id,
+    a.a_posted_by,
+    a.a_posted_at,
+    a.a_done_at
 FROM
-	(
-		SELECT
-			x.id        AS a_id,
-			x.posted_by AS a_posted_by,
-			x.posted_at AS a_posted_at,
-			x.done_flg  AS a_done_flg,
-			x.done_at   AS a_done_at
-		FROM
-			todo AS x
-		WHERE
-			x.deleted_flg = 0
-	) AS a
+    (
+        SELECT
+            x.id        AS a_id,
+            x.posted_by AS a_posted_by,
+            x.posted_at AS a_posted_at,
+            x.done_flg  AS a_done_flg,
+            x.done_at   AS a_done_at
+        FROM
+            todo AS x
+        WHERE
+            x.deleted_flg = 0
+    ) AS a
 WHERE
-	a.a_done_flg = 1
+    a.a_done_flg = 1
 ```
 
 ## 4. WHERE句の書き方
@@ -872,15 +872,15 @@ List<Tuple> list = query.select(
 
 ```SQL
 SELECT
-	a.id,
-	a.posted_at,
-	a.due_dt,
-	a.done_flg,
-	a.done_at
+    a.id,
+    a.posted_at,
+    a.due_dt,
+    a.done_flg,
+    a.done_at
 FROM
-	todo AS a
+    todo AS a
 WHERE
-	a.deleted_flg = 0
+    a.deleted_flg = 0
 ```
 
 #### 4.1.2 複合条件
@@ -911,17 +911,17 @@ List<Tuple> list = query.select(
 
 ```SQL
 SELECT
-	a.id,
-	a.posted_at,
-	a.due_dt,
-	a.done_flg,
-	a.done_at
+    a.id,
+    a.posted_at,
+    a.due_dt,
+    a.done_flg,
+    a.done_at
 FROM
-	todo AS a
+    todo AS a
 WHERE
-	a.deleted_flg = 0
-	AND
-	a.done_flg = 1
+    a.deleted_flg = 0
+    AND
+    a.done_flg = 1
 ```
 
 #### 4.1.3 条件の組合せ
@@ -963,21 +963,21 @@ List<Tuple> list = query.select(
 
 ```SQL
 SELECT
-	a.id,
-	a.posted_at,
-	a.due_dt,
-	a.done_flg,
-	a.done_at
+    a.id,
+    a.posted_at,
+    a.due_dt,
+    a.done_flg,
+    a.done_at
 FROM
-	todo AS a
+    todo AS a
 WHERE
-	(
-		a.done_flg = 1
-		OR
-		a.doe_dt >= '2015-02-01'
-	)
-	AND
-	a.done_at IS NULL
+    (
+        a.done_flg = 1
+        OR
+        a.doe_dt >= '2015-02-01'
+    )
+    AND
+    a.done_at IS NULL
 ```
 
 「`条件A OR (条件B AND 条件C)`」を指定するには「`条件A.or(条件B.and(条件C))`」の形で指定してください。
@@ -1006,21 +1006,21 @@ List<Tuple> list = query.select(
 
 ```SQL
 SELECT
-	a.id,
-	a.posted_at,
-	a.due_dt,
-	a.done_flg,
-	a.done_at
+    a.id,
+    a.posted_at,
+    a.due_dt,
+    a.done_flg,
+    a.done_at
 FROM
-	todo AS a
+    todo AS a
 WHERE
-	a.done_flg = 1
-	OR
-	(
-		a.doe_dt >= '2015-02-01'
-		AND
-		a.done_at IS NULL
-	)
+    a.done_flg = 1
+    OR
+    (
+        a.doe_dt >= '2015-02-01'
+        AND
+        a.done_at IS NULL
+    )
 ```
 
 
@@ -1097,19 +1097,19 @@ List<Tuple> list = query.select(
 
 ```SQL
 SELECT
-	a.id,
-	a.login_id
+    a.id,
+    a.login_id
 FROM
-	author AS a
+    author AS a
 WHERE
-	a.login_id IN (
-		SELECT
-			b.posted_by
-		FROM
-			todo AS b
-		WHERE
-			b.done_flg = 1
-	)
+    a.login_id IN (
+        SELECT
+            b.posted_by
+        FROM
+            todo AS b
+        WHERE
+            b.done_flg = 1
+    )
 ```
 
 #### 4.2.6 EXISTS
@@ -1143,21 +1143,21 @@ List<Tuple> list = query.select(
 
 ```SQL
 SELECT
-	a.id,
-	a.login_id
+    a.id,
+    a.login_id
 FROM
-	author AS a
+    author AS a
 WHERE
-	EXISTS (
-		SELECT
-			1
-		FROM
-			todo AS b
-		WHERE
-			b.done_flg = 1
-			AND
-			b.posted_by = a.login_id
-	)
+    EXISTS (
+        SELECT
+            1
+        FROM
+            todo AS b
+        WHERE
+            b.done_flg = 1
+            AND
+            b.posted_by = a.login_id
+    )
 ```
 
 ## 5. その他の書き方
@@ -1188,15 +1188,15 @@ List<Tuple> list = query.select(
 
 ```SQL
 SELECT
-	a.posted_by,
-	COUNT(a.id),
-	SUM(a.id),
-	MIN(a.posted_at),
-	MAX(a.posted_at)
+    a.posted_by,
+    COUNT(a.id),
+    SUM(a.id),
+    MIN(a.posted_at),
+    MAX(a.posted_at)
 FROM
-	todo AS a
+    todo AS a
 GROUP BY
-	a.posted_by
+    a.posted_by
 ```
 
 ### 5.2 HAVING句
@@ -1229,19 +1229,19 @@ List<Tuple> list = query.select(
 
 ```SQL
 SELECT
-	a.posted_by,
-	COUNT(a.id),
-	SUM(a.id),
-	MIN(a.posted_at),
-	MAX(a.posted_at)
+    a.posted_by,
+    COUNT(a.id),
+    SUM(a.id),
+    MIN(a.posted_at),
+    MAX(a.posted_at)
 FROM
-	todo AS a
+    todo AS a
 GROUP BY
-	a.posted_by
+    a.posted_by
 HAVING
-	COUNT(a.id) > 1
-	AND
-	MAX(a.posted_at) < '2015-02-01'
+    COUNT(a.id) > 1
+    AND
+    MAX(a.posted_at) < '2015-02-01'
 ```
 
 ### 5.3 ORDER BY句
@@ -1272,17 +1272,17 @@ List<Tuple> list = query.select(
 
 ```SQL
 SELECT
-	a.posted_by,
-	COUNT(a.id),
-	SUM(a.id),
-	MIN(a.posted_at),
-	MAX(a.posted_at)
+    a.posted_by,
+    COUNT(a.id),
+    SUM(a.id),
+    MIN(a.posted_at),
+    MAX(a.posted_at)
 FROM
-	todo AS a
+    todo AS a
 GROUP BY
-	a.posted_by
+    a.posted_by
 ORDER BY
-	COUNT(a.id) ASC
+    COUNT(a.id) ASC
 ```
 
 ### 5.4 UNION句
@@ -1319,19 +1319,19 @@ List<Tuple> list = query.fetch();
 
 ```SQL
 (
-	SELECT
-		a.id,
-		a.posted_by
-	FROM
-		todo AS a
+    SELECT
+        a.id,
+        a.posted_by
+    FROM
+        todo AS a
 )
 UNION
 (
-	SELECT
-		b.id,
-		b.login_id
-	FROM
-		author AS b
+    SELECT
+        b.id,
+        b.login_id
+    FROM
+        author AS b
 )
 ```
 
