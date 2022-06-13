@@ -30,9 +30,6 @@ import com.querydsl.sql.SQLTemplates;
 import com.querydsl.sql.SQLTemplatesRegistry;
 import com.querydsl.sql.spring.SpringConnectionProvider;
 import com.querydsl.sql.spring.SpringExceptionTranslator;
-import com.querydsl.sql.types.JSR310LocalDateTimeType;
-import com.querydsl.sql.types.JSR310LocalDateType;
-import com.querydsl.sql.types.JSR310LocalTimeType;
 
 @Configuration
 public class QuerydslConfiguration {
@@ -46,9 +43,6 @@ public class QuerydslConfiguration {
         }
         com.querydsl.sql.Configuration configuration = new com.querydsl.sql.Configuration(templates);
         configuration.setExceptionTranslator(new SpringExceptionTranslator());
-        configuration.register(new JSR310LocalDateTimeType());
-        configuration.register(new JSR310LocalDateType());
-        configuration.register(new JSR310LocalTimeType());
         Supplier<Connection> connProvider = new SpringConnectionProvider(dataSource);
         SQLQueryFactory sqf = new SQLQueryFactory(configuration, connProvider);
         return sqf;
