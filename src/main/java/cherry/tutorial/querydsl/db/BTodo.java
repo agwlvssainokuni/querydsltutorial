@@ -10,8 +10,6 @@ public class BTodo {
 
     private java.time.LocalDateTime createdAt;
 
-    private Integer deletedFlg;
-
     private String description;
 
     private java.time.LocalDateTime doneAt;
@@ -36,14 +34,6 @@ public class BTodo {
 
     public void setCreatedAt(java.time.LocalDateTime createdAt) {
         this.createdAt = createdAt;
-    }
-
-    public Integer getDeletedFlg() {
-        return deletedFlg;
-    }
-
-    public void setDeletedFlg(Integer deletedFlg) {
-        this.deletedFlg = deletedFlg;
     }
 
     public String getDescription() {
@@ -120,7 +110,7 @@ public class BTodo {
 
     @Override
     public String toString() {
-         return "createdAt = " + createdAt + ", deletedFlg = " + deletedFlg + ", description = " + description + ", doneAt = " + doneAt + ", doneFlg = " + doneFlg + ", dueDt = " + dueDt + ", id = " + id + ", lockVersion = " + lockVersion + ", postedAt = " + postedAt + ", postedBy = " + postedBy + ", updatedAt = " + updatedAt;
+         return "createdAt = " + createdAt + ", description = " + description + ", doneAt = " + doneAt + ", doneFlg = " + doneFlg + ", dueDt = " + dueDt + ", id = " + id + ", lockVersion = " + lockVersion + ", postedAt = " + postedAt + ", postedBy = " + postedBy + ", updatedAt = " + updatedAt;
     }
 
 }

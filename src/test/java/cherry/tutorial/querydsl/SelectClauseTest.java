@@ -74,11 +74,9 @@ public class SelectClauseTest {
             LocalDateTime valUpdatedAt = tuple.get(a.updatedAt);
             LocalDateTime valCreatedAt = tuple.get(a.createdAt);
             Integer valLockVersion = tuple.get(a.lockVersion);
-            Integer valDeletedFlg = tuple.get(a.deletedFlg);
             logger.info(
-                    "{}: loginId={}, name={}, updatedAt={}, createdAt={}, lockVersion={}, deletedFlg={}",
-                    valId, valLoginId, valName, valUpdatedAt, valCreatedAt, valLockVersion,
-                    valDeletedFlg);
+                    "{}: loginId={}, name={}, updatedAt={}, createdAt={}, lockVersion={}",
+                    valId, valLoginId, valName, valUpdatedAt, valCreatedAt, valLockVersion);
         }
     }
 
@@ -99,11 +97,9 @@ public class SelectClauseTest {
             LocalDateTime valUpdatedAt = tuple.get(a.updatedAt);
             LocalDateTime valCreatedAt = tuple.get(a.createdAt);
             Integer valLockVersion = tuple.get(a.lockVersion);
-            Integer valDeletedFlg = tuple.get(a.deletedFlg);
             logger.info(
-                    "{}: loginId={}, name={}, updatedAt={}, createdAt={}, lockVersion={}, deletedFlg={}",
-                    valId, valLoginId, valName, valUpdatedAt, valCreatedAt, valLockVersion,
-                    valDeletedFlg);
+                    "{}: loginId={}, name={}, updatedAt={}, createdAt={}, lockVersion={}",
+                    valId, valLoginId, valName, valUpdatedAt, valCreatedAt, valLockVersion);
         }
     }
 
@@ -125,11 +121,9 @@ public class SelectClauseTest {
             Timestamp valUpdatedAt = (Timestamp) tuple[3];
             Timestamp valCreatedAt = (Timestamp) tuple[4];
             Integer valLockVersion = (Integer) tuple[5];
-            Integer valDeletedFlg = (Integer) tuple[6];
             logger.info(
-                    "{}: loginId={}, name={}, updatedAt={}, createdAt={}, lockVersion={}, deletedFlg={}",
-                    valId, valLoginId, valName, valUpdatedAt, valCreatedAt, valLockVersion,
-                    valDeletedFlg);
+                    "{}: loginId={}, name={}, updatedAt={}, createdAt={}, lockVersion={}",
+                    valId, valLoginId, valName, valUpdatedAt, valCreatedAt, valLockVersion);
         }
     }
 
@@ -400,8 +394,7 @@ public class SelectClauseTest {
                 .select(b.name).distinct()
                 .from(b)
                 .where(
-                        b.loginId.eq(a.postedBy),
-                        b.deletedFlg.eq(0));
+                        b.loginId.eq(a.postedBy));
 
         /* 取出すカラムとデータの取出し方を指定してクエリを発行する。 */
         List<Tuple> list = query.select(

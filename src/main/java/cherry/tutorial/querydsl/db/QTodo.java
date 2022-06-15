@@ -26,8 +26,6 @@ public class QTodo extends com.querydsl.sql.RelationalPathBase<BTodo> {
 
     public final DateTimePath<java.time.LocalDateTime> createdAt = createDateTime("createdAt", java.time.LocalDateTime.class);
 
-    public final NumberPath<Integer> deletedFlg = createNumber("deletedFlg", Integer.class);
-
     public final StringPath description = createString("description");
 
     public final DateTimePath<java.time.LocalDateTime> doneAt = createDateTime("doneAt", java.time.LocalDateTime.class);
@@ -75,7 +73,6 @@ public class QTodo extends com.querydsl.sql.RelationalPathBase<BTodo> {
 
     public void addMetadata() {
         addMetadata(createdAt, ColumnMetadata.named("CREATED_AT").withIndex(9).ofType(Types.TIMESTAMP).withSize(26).withDigits(6).notNull());
-        addMetadata(deletedFlg, ColumnMetadata.named("DELETED_FLG").withIndex(11).ofType(Types.INTEGER).withSize(32).notNull());
         addMetadata(description, ColumnMetadata.named("DESCRIPTION").withIndex(7).ofType(Types.VARCHAR).withSize(1000).notNull());
         addMetadata(doneAt, ColumnMetadata.named("DONE_AT").withIndex(5).ofType(Types.TIMESTAMP).withSize(26).withDigits(6));
         addMetadata(doneFlg, ColumnMetadata.named("DONE_FLG").withIndex(6).ofType(Types.INTEGER).withSize(32).notNull());

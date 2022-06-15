@@ -1,0 +1,129 @@
+﻿# A5:ER FORMAT:16
+# A5:ER ENCODING:UTF8
+# A5:ER Mk-1 Copyright © 2007 m.matsubara
+# A5:SQL Mk-2 Version 2.17.2 Copyright © 1997 - 2022 m.matsubara
+#  https://a5m2.mmatsubara.com
+
+[Manager]
+ProjectName=QuerydslTutorial
+Author=agwlvssainokuni
+MaxEntityRowShow=1000
+ReadOnlyRecommend=0
+Page=QuerydslTutorial
+PageInfo="QuerydslTutorial",4,"A4Landscape",$FFFFFF
+Domain=ID=BIGINT
+DomainInfo="ID","BIGINT","",""
+Domain=整数【32bit】=@INT
+DomainInfo="整数【32bit】","@INT","",""
+Domain=整数【64bit】=BIGINT
+DomainInfo="整数【64bit】","BIGINT","",""
+Domain=区分値【2】=@VARCHAR(2)
+DomainInfo="区分値【2】","@VARCHAR(2)","",""
+Domain=区分値【3】=@VARCHAR(3)
+DomainInfo="区分値【3】","@VARCHAR(3)","",""
+Domain=区分値【5】=@VARCHAR(5)
+DomainInfo="区分値【5】","@VARCHAR(5)","",""
+Domain=文字列【10】=@VARCHAR(10)
+DomainInfo="文字列【10】","@VARCHAR(10)","",""
+Domain=文字列【30】=@VARCHAR(30)
+DomainInfo="文字列【30】","@VARCHAR(30)","",""
+Domain=文字列【50】=@VARCHAR(50)
+DomainInfo="文字列【50】","@VARCHAR(50)","",""
+Domain=文字列【100】=@VARCHAR(100)
+DomainInfo="文字列【100】","@VARCHAR(100)","",""
+Domain=文字列【300】=@VARCHAR(300)
+DomainInfo="文字列【300】","@VARCHAR(300)","",""
+Domain=文字列【500】=@VARCHAR(500)
+DomainInfo="文字列【500】","@VARCHAR(500)","",""
+Domain=文字列【1000】=@VARCHAR(1000)
+DomainInfo="文字列【1000】","@VARCHAR(1000)","",""
+Domain=文字列【3000】=@VARCHAR(3000)
+DomainInfo="文字列【3000】","@VARCHAR(3000)","",""
+Domain=文字列【5000】=@VARCHAR(5000)
+DomainInfo="文字列【5000】","@VARCHAR(5000)","",""
+Domain=文字列【TEXT】=TEXT
+DomainInfo="文字列【TEXT】","TEXT","",""
+Domain=日付=@DATE
+DomainInfo="日付","@DATE","",""
+Domain=時刻=@TIME
+DomainInfo="時刻","@TIME","",""
+Domain=日時=@DATETIME
+DomainInfo="日時","@DATETIME","",""
+Domain=日時(マイクロ秒)=@DATETIME(6)
+DomainInfo="日時(マイクロ秒)","@DATETIME(6)","",""
+LogicalView=1
+DecodeDomain=0
+ViewModePageIndividually=1
+ViewMode=4
+ViewFormat=0
+UseNondependenceDashLine=0
+FontName=Yu Gothic UI
+FontSize=11
+PaperSize=A4Landscape
+HeaderLeft=
+HeaderCenter=
+HeaderRight=
+FooterLeft=
+FooterCenter=
+FooterRight=
+ShowPageoutRelation=1
+RDBMSType=1
+RDBMSTypeName=IBM Db2
+BackupRestoreTempTable=0
+GenerateCommentStatement_Comment=0
+CommonField="更新日時","updated_at","*日時(マイクロ秒)","NOT NULL",,"CURRENT_TIMESTAMP","",$FFFFFFFF
+CommonField="作成日時","created_at","*日時(マイクロ秒)","NOT NULL",,"CURRENT_TIMESTAMP","",$FFFFFFFF
+CommonField="ロックバージョン","lock_version","*整数【32bit】","NOT NULL",,"0","",$FFFFFFFF
+DefaultPkName=%0:s_PKC
+DefaultPkIndexName=%0:s_PKI
+DefaultIndexName=%0:s_IX%1:d
+DefaultFkName=%0:s_FK%1:d
+SqlSeparator=0
+UpperCaseKeyword=1
+ShowTag=1
+ShowCommonAttributes=0
+BugFixEntityWidth=0
+
+[Entity]
+PName=author
+LName=投稿者
+Comment=
+TableOption=
+Page=QUERYDSLTUTORIAL
+Left=1500
+Top=500
+Field="ID","id","*ID","NOT NULL",0,"","",$FFFFFFFF,"AUTO_INCREMENT"
+Field="ログインID","login_id","*文字列【100】","NOT NULL",,"","",$FFFFFFFF,""
+Field="投稿者名","name","*文字列【100】","NOT NULL",,"","",$FFFFFFFF,""
+Index==0,login_id
+EffectMode=None
+Tag=マスタ
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20141231064721
+Position="QUERYDSLTUTORIAL",1500,500
+ZOrder=-1
+
+[Entity]
+PName=todo
+LName=TODO
+Comment=
+TableOption=
+Page=QUERYDSLTUTORIAL
+Left=500
+Top=500
+Field="ID","id","*ID","NOT NULL",0,"","",$FFFFFFFF,"AUTO_INCREMENT"
+Field="投稿者","posted_by","*文字列【100】","NOT NULL",,"","",$FFFFFFFF,""
+Field="投稿日時","posted_at","*日時","NOT NULL",,"","",$FFFFFFFF,""
+Field="期日","due_dt","*日付","NOT NULL",,"","",$FFFFFFFF,""
+Field="完了日時","done_at","*日時",,,"","",$FFFFFFFF,""
+Field="完了フラグ","done_flg","*整数【32bit】","NOT NULL",,"0","",$FFFFFFFF,""
+Field="TODO内容","description","*文字列【1000】","NOT NULL",,"","",$FFFFFFFF,""
+Index==0,posted_by
+EffectMode=None
+Tag=トランザクション
+Color=$000000
+BkColor=$FFFFFF
+ModifiedDateTime=20220615184720
+Position="QUERYDSLTUTORIAL",500,500
+ZOrder=-2

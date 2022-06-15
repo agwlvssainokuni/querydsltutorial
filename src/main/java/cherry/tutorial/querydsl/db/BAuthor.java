@@ -10,8 +10,6 @@ public class BAuthor {
 
     private java.time.LocalDateTime createdAt;
 
-    private Integer deletedFlg;
-
     private Long id;
 
     private Integer lockVersion;
@@ -28,14 +26,6 @@ public class BAuthor {
 
     public void setCreatedAt(java.time.LocalDateTime createdAt) {
         this.createdAt = createdAt;
-    }
-
-    public Integer getDeletedFlg() {
-        return deletedFlg;
-    }
-
-    public void setDeletedFlg(Integer deletedFlg) {
-        this.deletedFlg = deletedFlg;
     }
 
     public Long getId() {
@@ -80,7 +70,7 @@ public class BAuthor {
 
     @Override
     public String toString() {
-         return "createdAt = " + createdAt + ", deletedFlg = " + deletedFlg + ", id = " + id + ", lockVersion = " + lockVersion + ", loginId = " + loginId + ", name = " + name + ", updatedAt = " + updatedAt;
+         return "createdAt = " + createdAt + ", id = " + id + ", lockVersion = " + lockVersion + ", loginId = " + loginId + ", name = " + name + ", updatedAt = " + updatedAt;
     }
 
 }

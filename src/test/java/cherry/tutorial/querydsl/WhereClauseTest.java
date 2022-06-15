@@ -55,9 +55,7 @@ public class WhereClauseTest {
         /* 抽出条件を組み立てる。 */
         QTodo a = new QTodo("a");
         SQLQuery<?> query = queryFactory
-                .from(a)
-                .where(
-                        a.deletedFlg.eq(0));
+                .from(a);
 
         /* 取出すカラムとデータの取出し方を指定してクエリを発行する。 */
         List<Tuple> list = query.select(
@@ -89,8 +87,6 @@ public class WhereClauseTest {
         QTodo a = new QTodo("a");
         SQLQuery<?> query = queryFactory
                 .from(a)
-                .where(
-                        a.deletedFlg.eq(0))
                 .where(
                         a.doneFlg.eq(1));
 

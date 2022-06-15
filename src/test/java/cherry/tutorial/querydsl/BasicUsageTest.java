@@ -64,10 +64,9 @@ public class BasicUsageTest {
             LocalDateTime valUpdatedAt = tuple.get(a.updatedAt);
             LocalDateTime valCreatedAt = tuple.get(a.createdAt);
             Integer valLockVersion = tuple.get(a.lockVersion);
-            Integer valDeletedFlg = tuple.get(a.deletedFlg);
             logger.info(
-                    "{}: loginId={}, name={}, updatedAt={}, createdAt={}, lockVersion={}, deletedFlg={}",
-                    valId, valLoginId, valName, valUpdatedAt, valCreatedAt, valLockVersion, valDeletedFlg);
+                    "{}: loginId={}, name={}, updatedAt={}, createdAt={}, lockVersion={}",
+                    valId, valLoginId, valName, valUpdatedAt, valCreatedAt, valLockVersion);
         }
     }
 
@@ -90,10 +89,9 @@ public class BasicUsageTest {
             LocalDateTime valUpdatedAt = entity.getUpdatedAt();
             LocalDateTime valCreatedAt = entity.getCreatedAt();
             Integer valLockVersion = entity.getLockVersion();
-            Integer valDeletedFlg = entity.getDeletedFlg();
             logger.info(
-                    "{}: loginId={}, name={}, updatedAt={}, createdAt={}, lockVersion={}, deletedFlg={}",
-                    valId, valLoginId, valName, valUpdatedAt, valCreatedAt, valLockVersion, valDeletedFlg);
+                    "{}: loginId={}, name={}, updatedAt={}, createdAt={}, lockVersion={}",
+                    valId, valLoginId, valName, valUpdatedAt, valCreatedAt, valLockVersion);
         }
     }
 

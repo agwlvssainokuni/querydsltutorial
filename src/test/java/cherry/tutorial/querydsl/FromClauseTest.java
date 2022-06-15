@@ -86,8 +86,7 @@ public class FromClauseTest {
         SQLQuery<?> query = queryFactory
                 .from(a)
                 .join(b).on(
-                        b.loginId.eq(a.postedBy),
-                        b.deletedFlg.eq(0));
+                        b.loginId.eq(a.postedBy));
 
         /* 取出すカラムとデータの取出し方を指定してクエリを発行する。 */
         List<Tuple> list = query.select(
@@ -117,8 +116,7 @@ public class FromClauseTest {
         SQLQuery<?> query = queryFactory
                 .from(a)
                 .leftJoin(b).on(
-                        b.loginId.eq(a.postedBy),
-                        b.deletedFlg.eq(0));
+                        b.loginId.eq(a.postedBy));
 
         /* 取出すカラムとデータの取出し方を指定してクエリを発行する。 */
         List<Tuple> list = query.select(
@@ -149,8 +147,7 @@ public class FromClauseTest {
                 .from(a)
                 .rightJoin(b)
                 .on(
-                        b.loginId.eq(a.postedBy),
-                        b.deletedFlg.eq(0));
+                        b.loginId.eq(a.postedBy));
 
         /* 取出すカラムとデータの取出し方を指定してクエリを発行する。 */
         List<Tuple> list = query.select(
@@ -181,8 +178,7 @@ public class FromClauseTest {
                 .from(a)
                 .fullJoin(b)
                 .on(
-                        b.loginId.eq(a.postedBy),
-                        b.deletedFlg.eq(0));
+                        b.loginId.eq(a.postedBy));
 
         /* 取出すカラムとデータの取出し方を指定してクエリを発行する。 */
         List<Tuple> list = query.select(
@@ -215,9 +211,7 @@ public class FromClauseTest {
                         x.postedAt.as("a_posted_at"),
                         x.doneFlg.as("a_done_flg"),
                         x.doneAt.as("a_done_at"))
-                .from(x)
-                .where(
-                        x.deletedFlg.eq(0));
+                .from(x);
 
         /* 外側のSELECT文で取り出すカラムを指定するためのパス(メタデータ)を組み立てる。 */
         SimplePath<Tuple> a = Expressions.path(Tuple.class, "a");
