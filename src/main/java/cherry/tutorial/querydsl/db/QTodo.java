@@ -22,7 +22,7 @@ public class QTodo extends com.querydsl.sql.RelationalPathBase<BTodo> {
 
     private static final long serialVersionUID = -841149706;
 
-    public static final QTodo todo = new QTodo("TODO");
+    public static final QTodo todo = new QTodo("todo");
 
     public final DateTimePath<java.time.LocalDateTime> createdAt = createDateTime("createdAt", java.time.LocalDateTime.class);
 
@@ -44,10 +44,10 @@ public class QTodo extends com.querydsl.sql.RelationalPathBase<BTodo> {
 
     public final DateTimePath<java.time.LocalDateTime> updatedAt = createDateTime("updatedAt", java.time.LocalDateTime.class);
 
-    public final com.querydsl.sql.PrimaryKey<BTodo> todoPkc = createPrimaryKey(id);
+    public final com.querydsl.sql.PrimaryKey<BTodo> primary = createPrimaryKey(id);
 
     public QTodo(String variable) {
-        super(BTodo.class, forVariable(variable), "PUBLIC", "TODO");
+        super(BTodo.class, forVariable(variable), "null", "todo");
         addMetadata();
     }
 
@@ -57,31 +57,31 @@ public class QTodo extends com.querydsl.sql.RelationalPathBase<BTodo> {
     }
 
     public QTodo(String variable, String schema) {
-        super(BTodo.class, forVariable(variable), schema, "TODO");
+        super(BTodo.class, forVariable(variable), schema, "todo");
         addMetadata();
     }
 
     public QTodo(Path<? extends BTodo> path) {
-        super(path.getType(), path.getMetadata(), "PUBLIC", "TODO");
+        super(path.getType(), path.getMetadata(), "null", "todo");
         addMetadata();
     }
 
     public QTodo(PathMetadata metadata) {
-        super(BTodo.class, metadata, "PUBLIC", "TODO");
+        super(BTodo.class, metadata, "null", "todo");
         addMetadata();
     }
 
     public void addMetadata() {
-        addMetadata(createdAt, ColumnMetadata.named("CREATED_AT").withIndex(9).ofType(Types.TIMESTAMP).withSize(26).withDigits(6).notNull());
-        addMetadata(description, ColumnMetadata.named("DESCRIPTION").withIndex(7).ofType(Types.VARCHAR).withSize(1000).notNull());
-        addMetadata(doneAt, ColumnMetadata.named("DONE_AT").withIndex(5).ofType(Types.TIMESTAMP).withSize(26).withDigits(6));
-        addMetadata(doneFlg, ColumnMetadata.named("DONE_FLG").withIndex(6).ofType(Types.INTEGER).withSize(32).notNull());
-        addMetadata(dueDt, ColumnMetadata.named("DUE_DT").withIndex(4).ofType(Types.DATE).withSize(10).notNull());
-        addMetadata(id, ColumnMetadata.named("ID").withIndex(1).ofType(Types.BIGINT).withSize(64).notNull());
-        addMetadata(lockVersion, ColumnMetadata.named("LOCK_VERSION").withIndex(10).ofType(Types.INTEGER).withSize(32).notNull());
-        addMetadata(postedAt, ColumnMetadata.named("POSTED_AT").withIndex(3).ofType(Types.TIMESTAMP).withSize(26).withDigits(6).notNull());
-        addMetadata(postedBy, ColumnMetadata.named("POSTED_BY").withIndex(2).ofType(Types.VARCHAR).withSize(100).notNull());
-        addMetadata(updatedAt, ColumnMetadata.named("UPDATED_AT").withIndex(8).ofType(Types.TIMESTAMP).withSize(26).withDigits(6).notNull());
+        addMetadata(createdAt, ColumnMetadata.named("created_at").withIndex(9).ofType(Types.TIMESTAMP).withSize(26).notNull());
+        addMetadata(description, ColumnMetadata.named("description").withIndex(7).ofType(Types.VARCHAR).withSize(1000).notNull());
+        addMetadata(doneAt, ColumnMetadata.named("done_at").withIndex(5).ofType(Types.TIMESTAMP).withSize(19));
+        addMetadata(doneFlg, ColumnMetadata.named("done_flg").withIndex(6).ofType(Types.INTEGER).withSize(10).notNull());
+        addMetadata(dueDt, ColumnMetadata.named("due_dt").withIndex(4).ofType(Types.DATE).withSize(10).notNull());
+        addMetadata(id, ColumnMetadata.named("id").withIndex(1).ofType(Types.BIGINT).withSize(19).notNull());
+        addMetadata(lockVersion, ColumnMetadata.named("lock_version").withIndex(10).ofType(Types.INTEGER).withSize(10).notNull());
+        addMetadata(postedAt, ColumnMetadata.named("posted_at").withIndex(3).ofType(Types.TIMESTAMP).withSize(19).notNull());
+        addMetadata(postedBy, ColumnMetadata.named("posted_by").withIndex(2).ofType(Types.VARCHAR).withSize(100).notNull());
+        addMetadata(updatedAt, ColumnMetadata.named("updated_at").withIndex(8).ofType(Types.TIMESTAMP).withSize(26).notNull());
     }
 
 }

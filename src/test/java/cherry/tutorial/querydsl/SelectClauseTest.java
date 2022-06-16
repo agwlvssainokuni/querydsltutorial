@@ -18,7 +18,6 @@ package cherry.tutorial.querydsl;
 
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -118,8 +117,8 @@ public class SelectClauseTest {
             Long valId = (Long) tuple[0];
             String valLoginId = (String) tuple[1];
             String valName = (String) tuple[2];
-            Timestamp valUpdatedAt = (Timestamp) tuple[3];
-            Timestamp valCreatedAt = (Timestamp) tuple[4];
+            LocalDateTime valUpdatedAt = (LocalDateTime) tuple[3];
+            LocalDateTime valCreatedAt = (LocalDateTime) tuple[4];
             Integer valLockVersion = (Integer) tuple[5];
             logger.info(
                     "{}: loginId={}, name={}, updatedAt={}, createdAt={}, lockVersion={}",

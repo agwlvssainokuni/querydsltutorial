@@ -12,10 +12,17 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
+buildscript {
+    repositories { mavenCentral() }
+    dependencies {
+        classpath "org.flywaydb:flyway-mysql:8.5.13"
+    }
+}
+
 plugins {
     id "java-library"
     id "io.spring.dependency-management" version "1.0.11.RELEASE"
-    id "org.flywaydb.flyway" version "8.5.12"
+    id "org.flywaydb.flyway" version "8.5.13"
 }
 
 sourceCompatibility = 17
@@ -41,16 +48,17 @@ dependencies {
     implementation "com.querydsl:querydsl-sql"
     implementation "com.querydsl:querydsl-sql-spring"
     runtimeOnly "org.flywaydb:flyway-core"
-    runtimeOnly "com.h2database:h2"
+    runtimeOnly "org.flywaydb:flyway-mysql"
+    runtimeOnly "mysql:mysql-connector-java"
     testImplementation "org.springframework.boot:spring-boot-starter-test"
     codegen "com.querydsl:querydsl-sql-codegen"
-    codegen "com.h2database:h2"
+    codegen "mysql:mysql-connector-java"
 }
 
 flyway {
-    url = "jdbc:h2:file:" + file("./build/codegen")
-    user = "sa"
-    password = ""
+    url = "jdbc:mysql://127.0.0.1:3306/tutorial"
+    user = "tutorial"
+    password = "password"
 }
 
 task codegen {
@@ -62,13 +70,13 @@ task codegen {
     )
     doLast {
         ant.codegen(
-            jdbcDriver: "org.h2.Driver",
-            jdbcUrl: "jdbc:h2:file:" + file("./build/codegen"),
-            jdbcUser: "sa",
-            jdbcPassword: "",
+            jdbcDriver: "com.mysql.cj.jdbc.Driver",
+            jdbcUrl: "jdbc:mysql://127.0.0.1:3306/tutorial",
+            jdbcUser: "tutorial",
+            jdbcPassword: "password",
             targetFolder: file("src/main/java"),
             packageName: "cherry.tutorial.querydsl.db",
-            schemaPattern: "",
+            tableNamePattern: "author, todo",
             exportBeans: true,
             beanAddToString: true,
             namePrefix: "Q",

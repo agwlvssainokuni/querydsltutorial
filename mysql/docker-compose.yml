@@ -1,0 +1,15 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    ports:
+      - '3306:3306'
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - TZ=JST-9
+    volumes:
+      - ./data:/var/lib/mysql
+      - ./initialize-database.sql:/docker-entrypoint-initdb.d/initialize-database.sql
+    cap_add:
+      - SYS_NICE
