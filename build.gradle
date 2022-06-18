@@ -25,6 +25,8 @@ plugins {
     id "org.flywaydb.flyway" version "8.5.13"
 }
 
+apply plugin: "querydslexport"
+
 sourceCompatibility = 17
 targetCompatibility = 17
 
@@ -59,6 +61,27 @@ flyway {
     url = "jdbc:mysql://127.0.0.1:3306/tutorial"
     user = "tutorial"
     password = "password"
+}
+
+querydsl {
+    jdbcDriver = "com.mysql.cj.jdbc.Driver"
+    jdbcUrl = "jdbc:mysql://127.0.0.1:3306/tutorial"
+    jdbcUser = "tutorial"
+    jdbcPassword = "password"
+    targetFolder = file("src/main/java")
+    packageName = "cherry.tutorial.querydsl.db"
+    catalogPattern = "tutorial"
+    tableNamePattern = "author, todo"
+    namePrefix = "Q"
+    beanPrefix = "B"
+    exportBeans = true
+    //exportPrimaryKeys = true
+    //beanAddToString = true
+    customTypes = [
+        "com.querydsl.sql.types.JSR310LocalDateTimeType",
+        "com.querydsl.sql.types.JSR310LocalDateType",
+        "com.querydsl.sql.types.JSR310LocalTimeType"
+    ]
 }
 
 task codegen {
